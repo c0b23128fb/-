@@ -28,6 +28,7 @@ def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
+
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -48,6 +49,10 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
+        if kk_rct.colliderect(bd_rct): # 工科トンと爆弾がぶつかったら
+            print("GameOver")
+            return
+
         screen.blit(bg_img, [0, 0]) 
 
         key_lst = pg.key.get_pressed()
