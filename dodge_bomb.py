@@ -82,19 +82,19 @@ def main():
         
         screen.blit(bg_img, [0, 0]) 
 
-        key_lst = pg.key.get_pressed()
+        key_lst = pg.key.get_pressed() # 
         sum_mv = [0, 0]
         for k, v in DELTA.items():
-            if key_lst[k]:
+            if key_lst[k]: # キーを押したとき
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
 
-        kk_rct.move_ip(sum_mv)
+        kk_rct.move_ip(sum_mv) # こうかとんの判定
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
-        screen.blit(kk_img, kk_rct)
-        bd_rct.move_ip(vx, vy)
-        screen.blit(bd_img, bd_rct)
+        screen.blit(kk_img, kk_rct) # こうかとんを表示
+        bd_rct.move_ip(vx, vy)  # バクダンの動き
+        screen.blit(bd_img, bd_rct) # バクダンを表示
         yoko, tate = check_bound(bd_rct)
         if not yoko:
             vx *= -1
