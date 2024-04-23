@@ -29,7 +29,12 @@ def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
+
 def GameOver1():
+    """
+    フォントサイズを80に設定する
+    白字で"GameOver"と書く
+    """
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("GameOver", True, (255, 255, 255))
     return txt
@@ -50,8 +55,10 @@ def main():
     clock = pg.time.Clock()
     ki_img = pg.image.load("fig/8.png") # 泣いてる工科トン
     ki_rct = ki_img.get_rect()
-    ki_rct.center = 500, 400
-
+    ki_rct.center = 680, 300
+    ko_img = pg.image.load("fig/7.png") # 工科トン
+    ko_rct = ko_img.get_rect()
+    ko_rct.center = 300, 300
 
     tmr = 0
     txt = GameOver1()
@@ -64,9 +71,10 @@ def main():
             pg.draw.rect(bg_img, (0, 0, 0), (0, 0, WIDTH, HEIGHT)) # 四角を描画
             alpha = 128 # 透明度
             bg_img.set_alpha(alpha)
-            screen.blit(bg_img, [0, 0])
-            screen.blit(txt, [350, 250])
-            screen.blit(ki_img, ki_rct)
+            screen.blit(bg_img, [0, 0]) # 半透明の背景を表示
+            screen.blit(txt, [350, 250]) # テキストを表示
+            screen.blit(ki_img, ki_rct) # 泣いてる工科トン
+            screen.blit(ko_img, ko_rct) # 工科トン
             pg.display.update()
             time.sleep(5) # 5秒止まる
             return
